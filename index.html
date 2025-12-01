@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ToolBase — Image Tools</title>
+  <meta name="description" content="One-click background remove, ID photo, compress, watermark add/remove — pure front-end, Cloudflare Pages ready." />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="brand">ToolBase — Image Tools</div>
+      <div class="actions">
+        <select id="langSelect"></select>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap main">
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="bg">一键抠图</button>
+      <button class="tab-btn" data-tab="id">证件照生成</button>
+      <button class="tab-btn" data-tab="compress">图片压缩</button>
+      <button class="tab-btn" data-tab="watermark">水印加/去</button>
+    </nav>
+
+    <section id="bg" class="tab">
+      <h2 id="bg-title">一键抠图</h2>
+      <p class="muted" id="bg-desc">适合简单背景（纯色 / 单一色块）。上传图片点击“去背景”。</p>
+      <input id="bg-file" type="file" accept="image/*">
+      <div class="canvas-row">
+        <canvas id="bg-canvas" class="canvas"></canvas>
+        <canvas id="bg-mask" class="canvas hide"></canvas>
+      </div>
+      <div class="controls">
+        <label>容差: <input id="bg-threshold" type="range" min="0" max="200" value="60"></label>
+        <button id="bg-remove">去背景</button>
+        <button id="bg-download">下载 PNG (透明)</button>
+      </div>
+    </section>
+
+    <section id="id" class="tab hide">
+      <h2 id="id-title">证件照生成器</h2>
+      <p class="muted" id="id-desc">自动裁剪并更换底色，支持常见尺寸。</p>
+      <input id="id-file" type="file" accept="image/*">
+      <div class="canvas-row">
+        <canvas id="id-canvas" class="canvas"></canvas>
+      </div>
+      <div class="controls">
+        <select id="id-size">
+          <option value="passport">护照 (600x600)</option>
+          <option value="1in">1寸 (295x413)</option>
+          <option value="2in">2寸 (600x800)</option>
+        </select>
+        <select id="id-bgcolor">
+          <option value="#ffffff">白</option>
+          <option value="#2196f3">蓝</option>
+          <option value="#ff0000">红</option>
+        </select>
+        <button id="id-generate">生成</button>
+        <button id="id-download">下载 JPG</button>
+      </div>
+    </section>
+
+    <section id="compress" class="tab hide">
+      <h2 id="compress-title">图片压缩 & 格式转换</h2>
+      <p class="muted" id="compress-desc">调整质量与尺寸，导出 JPG/PNG/WebP。</p>
+      <input id="compress-file" type="file" accept="image/*">
+      <div class="canvas-row">
+        <canvas id="compress-canvas" class="canvas"></canvas>
+      </div>
+      <div class="controls">
+        <label>质量: <input id="compress-quality" type="range" min="10" max="100" value="80"></label>
+        <label>宽度(px): <input id="compress-width" type="number" value="0" min="0"></label>
+        <select id="compress-format">
+          <option value="image/jpeg">JPG</option>
+          <option value="image/png">PNG</option>
+          <option value="image/webp">WebP</option>
+        </select>
+        <button id="compress-run">压缩 & 下载</button>
+      </div>
+    </section>
+
+    <section id="watermark" class="tab hide">
+      <h2 id="wm-title">水印 加 / 去</h2>
+      <p class="muted" id="wm-desc">添加文本/图片水印或选择区域进行简单修补（仅用于你拥有版权的图片）。</p>
+      <input id="wm-file" type="file" accept="image/*">
+      <div class="canvas-row">
+        <canvas id="wm-canvas" class="canvas"></canvas>
+      </div>
+      <div class="controls">
+        <input id="wm-text" placeholder="水印文字">
+        <button id="wm-add-text">添加文字水印</button>
+        <input id="wm-imgfile" type="file" accept="image/*">
+        <button id="wm-add-img">图片水印</button>
+        <button id="wm-select-remove">选择矩形去水印</button>
+        <button id="wm-download">下载</button>
+      </div>
+    </section>
+
+    <section class="note">
+      <h3>免责声明 / Notice</h3>
+      <p id="disclaimer" class="muted">仅处理你上传并拥有权利的图片。禁止用于侵犯版权的去水印。ToolBase 不保存任何文件（本地处理）。</p>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    <small>© <span id="year"></span> ToolBase — 部署到 Cloudflare Pages</small>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
