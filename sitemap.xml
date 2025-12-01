@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
- <url><loc>https://zhengjianlong.cloudns.pro/</loc><priority>1.0</priority></url>
- <url><loc>https://zhengjianlong.cloudns.pro/#bg</loc><priority>0.8</priority></url>
- <url><loc>https://zhengjianlong.cloudns.pro/#id</loc><priority>0.8</priority></url>
- <url><loc>https://zhengjianlong.cloudns.pro/#compress</loc><priority>0.8</priority></url>
- <url><loc>https://zhengjianlong.cloudns.pro/#watermark</loc><priority>0.8</priority></url>
+ <url><loc>https://zhengjianlong.dpdns.org/</loc><priority>1.0</priority></url>
+ <url><loc>https://zhengjianlong.dpdns.org/#bg</loc><priority>0.8</priority></url>
+ <url><loc>https://zhengjianlong.dpdns.org/#id</loc><priority>0.8</priority></url>
+ <url><loc>https://zhengjianlong.dpdns.org/#compress</loc><priority>0.8</priority></url>
+ <url><loc>https://zhengjianlong.dpdns.org/#watermark</loc><priority>0.8</priority></url>
 </urlset>
