@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https:/zhengjianlong.cloudns.pro/sitemap.xml
